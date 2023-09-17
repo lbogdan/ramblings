@@ -102,7 +102,7 @@ apt-get -qy autoremove
   #  linux-headers-6.5.3-060503-generic
   ```
 
-  We're getting an error configuring `linux-headers-6.5.3-060503-generic`, as it depends on `libc6 (>= 2.38)`, and we only have `2.35`. Not to worry (or should we?), we'll hack around this by editing `/var/lib/dpkg/status`, searching for `linux-headers-6.5.3-060503-generic`, replacing the `libc6 (>= 2.38)` with `libc6 (>= 2.35)` in `Depends:`, and then running:
+  We're getting an error on setting up `linux-headers-6.5.3-060503-generic`, as it depends on `libc6 (>= 2.38)`, and we only have `2.35`. Not to worry (or should we?), we'll hack around this by editing `/var/lib/dpkg/status`, searching for `linux-headers-6.5.3-060503-generic`, replacing the `libc6 (>= 2.38)` with `libc6 (>= 2.35)` in `Depends:`, and then running:
 
   ```sh
   apt-get -qf install
@@ -188,7 +188,7 @@ apt-get -qy autoremove
   EOT
   ```
 
-- Enable `bash` completion. For some reason, although the `bash-completion` package is installed, it is not enabled. To enable, we edit `/etc/bash.bashrc` and uncomment the code block after the `# enable bash completion in interactive shells` line. We then restart the `bash` session and check if it works:
+- Enable `bash` completion. For some reason, although the `bash-completion` package is installed, completion is not enabled. To enable, we edit `/etc/bash.bashrc` and uncomment the code block after the `# enable bash completion in interactive shells` line. We then restart the `bash` session and check if it works:
 
   ```sh
   exec bash -l
