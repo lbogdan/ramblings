@@ -51,7 +51,7 @@ hostname -f
 ```
 
 > **Note**
-> Although not best practice, I'll be running all commands as the `root` user.
+> Although not best practice, I'll be running all commands as the `root` user, for convenience sake.
 
 ## Initial Server Setup
 
