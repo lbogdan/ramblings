@@ -24,7 +24,7 @@ Before anything, let's first take a look at [`kubeadm` prerequisites](https://ku
 
 - for a multi-node cluster, at least 4 cores and 4GB or RAM.
 
-Fast storage (NVMe) is also recommended on the control-plane nodes, as `etcd` is [very sensitive to disk write latency](https://etcd.io/docs/v3.3/op-guide/hardware/#disks).
+Fast storage (NVMe) is also recommended on the control-plane nodes, as `etcd`, Kubernetes' data store, is [very sensitive to disk write latency](https://etcd.io/docs/v3.3/op-guide/hardware/#disks).
 
 Of course, all these highly depend on the size of the cluster, both in the number of nodes, and the number, size, and dynamicity of your workloads. To give you an idea, the clusters I've been managing over time have 64GB, >=8 cores control-plane nodes, and >=64GB, >=16 cores worker nodes, all with NVMe M.2 PCIE drives.
 
