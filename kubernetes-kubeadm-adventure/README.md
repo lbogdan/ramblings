@@ -1,6 +1,7 @@
 *published on TODO: add date*
 
 > **Tip**
+>
 > To see the table of contents, you can click on the outline button ![outline button](images/outline.png) in the top-right corner.
 
 # Adventures in Kubernetes Land: Create and Manage Bare-Metal, Production-Ready Clusters Using `kubeadm`
