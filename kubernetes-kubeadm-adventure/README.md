@@ -2,7 +2,7 @@
 
 > **Tip**
 >
-> To see the table of contents, you can click on the outline button ![outline button](images/outline.png) in the top-right corner.
+> To see the table of contents, you can click on the outline button <img alt="outline button" src="images/outline.png" width="24"> in the top-right corner.
 
 # Adventures in Kubernetes Land: Create and Manage Bare-Metal, Production-Ready Clusters Using `kubeadm`
 
