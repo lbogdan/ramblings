@@ -88,19 +88,19 @@ I also (only) have `Vetur` and `ESLint` extensions installed.
 
 Let's open the app folder in VSCode and open the `src/App.vue` file. We should see a dialog asking us if we want to use our project's local `eslint` version from `node_modules`:
 
-![](/images/vue-vscode-eslint-prettier/1.png)
+![](images/1.png)
 
 This allows us to use a different version of `eslint` per project, so of course we're gonna allow it!
 
 Let's now see what happens if we make the most common (and probably the most hated, too) code inaccuracy (because it's not really a mistake) - declaring an unused variable: add `const a = 10` on a new line right under the `import`. We can immediately see a red squiggly under `a`, signaling that there's something wrong with our code. Hovering over it we get:
 
-![](/images/vue-vscode-eslint-prettier/2.png)
+![](images/2.png)
 
 From the text "eslint(no-unused-vars)" we can deduce it's an `eslint` error because we're breaking the `no-unused-vars` rule. If a rule sounds weird to you (they usually do!) and want to know more about it you can click on "Quick Fix" -> "Show documentation for ...". Doing that in our case gets us to the [`no-unused-vars` rule documentation page](https://eslint.org/docs/rules/no-unused-vars).
 
 Let's now check that linting also works inside the `<template>` block: add `<div v-for="i in 5">{{ i }}</div>` on a new line right under `<HelloWorld>`, we should see another red squiggly and on hover:
 
-![](/images/vue-vscode-eslint-prettier/3.png)
+![](images/3.png)
 
 I'll leave it to you to figure out what that [error](https://eslint.vuejs.org/rules/require-v-for-key.html) is about.
 
@@ -120,7 +120,7 @@ We'll still keep `vetur`'s `<style>` validation for now, which uses [VSCode's bu
 
 If we did everything right, we should now see the previous error only once:
 
-![](/images/vue-vscode-eslint-prettier/4.png)
+![](images/4.png)
 
 And so we get our first achievement unlocked: VSCode linting expert! Actually, there's three more ways to lint your code that should now work out-of-the-box. We'll take a look at them next.
 
@@ -181,7 +181,7 @@ D:\work\vue-simple-app\src\App.vue
 
 and a similar error overlay in the browser:
 
-![](/images/vue-vscode-eslint-prettier/5.png)
+![](images/5.png)
 
 If we now remove the error and save, everything should go back to normal: the app compiles and the error overlay goes away.
 
@@ -285,7 +285,7 @@ $ yarn eslint --print-config src/App.vue | grep 'vue/' -A2
 
 As I said earlier, some linting rules can be auto-fixed. To see how this works, let's clear all errors from `App.vue` and add a new line right under `import` - `const re = new RegExp(/  /)`. You'll notice that besides `no-unused-vars` we get a new error: `no-regex-spaces`. If we hover over it and click on "Quick Fix..." we see a new menu option "Fix this no-regex-spaces problem":
 
-![](/images/vue-vscode-eslint-prettier/6.png)
+![](images/6.png)
 
 If we click on it the error goes away and our newly added code is replaced with `const re = new RegExp(/ {2}/)`. Magic! There aren't that many rules that support auto-fixing, but this will come in handy when meeting `prettier` soon.
 
@@ -337,7 +337,7 @@ module.exports = {
 
 We're using [`plugin:vue/recommended`](https://unpkg.com/browse/eslint-plugin-vue@6.2.2/lib/configs/recommended.js) here, which is a more opinionated preset than `plugin:vue/essential`, but you can change it back if it's too opinionated for you. Otherwise, we can already see some new warnings in `src/App.vue` and `src/components/HelloWorld.vue` - a few template ones and this:
 
-![](/images/vue-vscode-eslint-prettier/8.png)
+![](images/8.png)
 
 which can be fixed by:
 
@@ -394,7 +394,7 @@ So here's a brilliant idea: what if instead of running `eslint` and `prettier` a
 
 This might sound a bit confusing, so let's see an example:
 
-![](/images/vue-vscode-eslint-prettier/7.png)
+![](images/7.png)
 
 Here we messed a bit with the `components: {...}` formatting, and we see `eslint` giving us an auto-fixable `prettier/prettier` warning saying we should insert two spaces in front of `HelloWorld` to fix formatting. Now, if we have auto-fix on save enabled, we can just save and our code goes back to being all nice and cute and cuddly.
 
