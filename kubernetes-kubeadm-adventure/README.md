@@ -119,7 +119,7 @@ apt-get -qy autoremove
 
 - Hard-disable IPv6, from the kernel command line. This is not required in any way, just personal preference, so that I don't see IPv6 addresses when troubleshooting networking issues. IPv6 enabled might also cause the odd, obscure networking issue, like hostnames resolving to IPv6 IPs instead of IPv4.
 
-  First we edit `/etc/default/grub` and append `ipv6.disable=1` to `GRUB_CMDLINE_LINUX_DEFAULT`. Then we edit `/etc/netplan/50-cloud-init.yaml` and remove all references to IPv6 addresses - `addresses`, `nameservers` and `routes` (otherwise `systemd` will block when configuring the network on next boot).
+  First we edit `/etc/default/grub` and append `ipv6.disable=1` to `GRUB_CMDLINE_LINUX_DEFAULT`. Then we edit `/etc/netplan/50-cloud-init.yaml` and remove (/ comment out) all references to IPv6 addresses - `addresses`, `nameservers` and `routes` (otherwise `systemd` will block when configuring the network on next boot).
 
   Finally, run:
 
