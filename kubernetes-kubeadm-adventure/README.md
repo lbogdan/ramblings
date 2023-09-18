@@ -275,7 +275,7 @@ apt-mark hold kubeadm kubectl kubelet cri-o runc
 
 We're also installing `runc`, which is the reference implementation of the [OCI runtime specification](https://github.com/opencontainers/runtime-spec), used by `cri-o` to actually manage containers' lifecycle, and "holding" the installed packages, which means they won't be automatically updated when running `apt-get upgrade`.
 
-## CRI Runtime
+## CRI Runtime: `cri-o`
 
 Like I said above, `kubeadm` is the "official" Kubernetes tool to create a cluster, specifically its `kubeadm init` subcommand. If we take a look at its help (`kubeadm init --help`), we can see that, when invoked, it will execute through a list of phases, of which the first is "preflight - Run pre-flight checks". We can also execute a specific phase, so let's do a preflight check:
 
