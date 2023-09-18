@@ -237,21 +237,10 @@ curl -fsSL https://download.opensuse.org/repositories/devel:/kubic:/libcontainer
 echo "deb [signed-by=/etc/apt/keyrings/libcontainers-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/${OS}/ /" >/etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
 echo "deb [signed-by=/etc/apt/keyrings/libcontainers-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/${KUBERNETES_MINOR}/${OS}/ /" >/etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:${KUBERNETES_MINOR}.list
 apt-get -q update
-apt-cache policy kubeadm
-# kubeadm:
-#   Installed: (none)
-#   Candidate: 1.27.6-1.1
-#   Version table:
-#      1.27.6-1.1 500
-#         500 https://pkgs.k8s.io/core:/stable:/v1.27/deb  Packages
-# [...]
-apt-cache policy cri-o
-# cri-o:
-#   Installed: (none)
-#   Candidate: 1.27.1~0
-#   Version table:
-#      1.27.1~0 500
-#         500 https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.27/xUbuntu_22.04  Packages
+apt-cache madison kubeadm | head -1
+#    kubeadm | 1.27.6-1.1 | https://pkgs.k8s.io/core:/stable:/v1.27/deb  Packages
+apt-cache madison cri-o
+#      cri-o |   1.27.1~0 | https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/1.27/xUbuntu_22.04  Packages
 ```
 
 We can see that the latest Kubernetes `1.27` release is `1.27.6`. Interestingly, the official [release page](https://kubernetes.io/releases/#release-v1-27) shows "**Latest Release:** 1.27.5 (released: 2023-08-23)", but if we go to the [1.27 Changelog](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.27.md), latest is indeed `1.27.6`.
@@ -329,21 +318,10 @@ which runc
 Interesting, it's trying to use a `runc` from `/usr/lib/cri-o-runc/sbin/runc`, but our `runc` is in `/usr/sbin/runc`. Turns out `cri-o` comes with its own `runc` package, named `cri-o-runc`, but it's an older version, and that's why we used the Ubuntu's `runc` package:
 
 ```sh
-apt-cache policy cri-o-runc
-# cri-o-runc:
-#   Installed: (none)
-#   Candidate: 1.0.1~2
-#   Version table:
-#      1.0.1~2 500
-#         500 https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_22.04  Packages
-apt-cache policy runc
-# runc:
-#   Installed: 1.1.7-0ubuntu1~22.04.1
-#   Candidate: 1.1.7-0ubuntu1~22.04.1
-#   Version table:
-#  *** 1.1.7-0ubuntu1~22.04.1 500
-#         500 https://mirror.hetzner.com/ubuntu/packages jammy-updates/main amd64 Packages
-# [...]
+apt-cache madison cri-o-runc
+# cri-o-runc |    1.0.1~2 | https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_22.04  Packages
+apt-cache madison runc | head -1
+#       runc | 1.1.7-0ubuntu1~22.04.1 | https://mirror.hetzner.com/ubuntu/packages jammy-updates/main amd64 Packages
 ```
 
 This is configured in `/etc/crio/crio.conf.d/01-crio-runc.conf`, so let's make it right:
