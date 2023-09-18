@@ -401,7 +401,7 @@ And so we only have two more kernel-related requirements left:
 #         [ERROR FileContent--proc-sys-net-ipv4-ip_forward]: /proc/sys/net/ipv4/ip_forward contents are not set to 1
 ```
 
-For the first, we need the `br_netfilter` kernel module loaded, and for the second we need to enable IP forwarding:
+For the first, we need to load the `br_netfilter` kernel module, and for the second we need to enable IP forwarding:
 
 ```sh
 cat <<EOF >/etc/modules-load.d/kubeadm.conf
@@ -410,7 +410,7 @@ EOF
 cat <<EOF >/etc/sysctl.d/kubeadm.conf
 net.ipv4.ip_forward                 = 1
 EOF
-# the above will effect at next boot, so we need to explicitly enable them:
+# the above will take effect at next boot, so we need to explicitly enable them:
 modprobe br_netfilter
 sysctl --system 2>/dev/null | grep ip_forward
 # net.ipv4.ip_forward = 1
