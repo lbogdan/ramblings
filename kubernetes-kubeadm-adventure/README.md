@@ -610,7 +610,7 @@ kubectl get pods -A -o wide
 The node is `Ready`, the `coredns` pods are `Running`, and we have two more `calico` pods, created by the applied manifest.
 
 > **Note**
-> As an aside, I think that's one of the Kubernetes' strengths: you define a manifest following a well-defined API, and after a little while, you have your cluster converging, configuring and running whatever workloads you defined in your manifest. Just imagine doing the same to orchestrate, configure and run workloads on multiple nodes with assorted tools and / or bespoke scripts!
+> As an aside, I think that's one of Kubernetes' strengths: you define a manifest following a well-defined API, and after a little while, you have your cluster converging, configuring and running whatever workloads you defined in your manifest. Just imagine doing the same to orchestrate, configure and run workloads on multiple nodes with assorted tools and / or bespoke scripts!
 
 ## Cluster Validation Checks
 
