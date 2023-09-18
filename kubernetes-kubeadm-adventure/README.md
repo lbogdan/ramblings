@@ -408,7 +408,7 @@ cat <<EOF >/etc/modules-load.d/kubeadm.conf
 br_netfilter
 EOF
 cat <<EOF >/etc/sysctl.d/kubeadm.conf
-net.ipv4.ip_forward                 = 1
+net.ipv4.ip_forward = 1
 EOF
 # the above will take effect at next boot, so we need to explicitly enable them:
 modprobe br_netfilter
