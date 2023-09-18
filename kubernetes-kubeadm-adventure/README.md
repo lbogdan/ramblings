@@ -438,7 +438,7 @@ crictl images
 # registry.k8s.io/pause                     3.9                 e6f1816883972       750kB
 ```
 
-Could this be? Are we finally ready to create the cluster? Let's see!
+Could this be? Are we finally ready to create the cluster? Let's do it!
 
 ## Finally, a Cluster!
 
@@ -508,25 +508,25 @@ kubeadm init --kubernetes-version "$KUBERNETES_VERSION" --pod-network-cidr 192.1
 # [kubelet-finalize] Updating "/etc/kubernetes/kubelet.conf" to point to a rotatable kubelet client certificate and key
 # [addons] Applied essential addon: CoreDNS
 # [addons] Applied essential addon: kube-proxy
-
+#
 # Your Kubernetes control-plane has initialized successfully!
-
+#
 # To start using your cluster, you need to run the following as a regular user:
-
+#
 #   mkdir -p $HOME/.kube
 #   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 #   sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
+#
 # Alternatively, if you are the root user, you can run:
-
+#
 #   export KUBECONFIG=/etc/kubernetes/admin.conf
-
+#
 # You should now deploy a pod network to the cluster.
 # Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 #   https://kubernetes.io/docs/concepts/cluster-administration/addons/
-
+#
 # Then you can join any number of worker nodes by running the following on each as root:
-
+#
 # kubeadm join 65.108.153.69:6443 --token yx2bhq.p1hvj3eopm4xurtq \
 #         --discovery-token-ca-cert-hash sha256:a566acdc5d026db191b7ccc04da9a8b5331414846c8a5de072c53b337706ec9d
 export KUBECONFIG=/etc/kubernetes/admin.conf
