@@ -355,7 +355,7 @@ systemctl enable crio
 Nice, we got it running! We can use the `crictl` tool to get some insights into its state:
 
 ```sh
-# crictl version
+crictl version
 # Version:  0.1.0
 # RuntimeName:  cri-o
 # RuntimeVersion:  1.27.1
