@@ -390,7 +390,7 @@ crictl images
 # IMAGE               TAG                 IMAGE ID            SIZE
 ```
 
-As expected, it doesn't have any images yet, and it's not running any pods / containers. But wait, why is the network not ready? Were we wrong in deleting the default CNI network configs? Well, no, Kubernetes [network plugins](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) are supposed to be installed **after** you have a running cluster.
+As expected, it doesn't have any images yet, and it's not running any pods / containers. But wait, why is the network not ready? Were we wrong in deleting the default CNI network configs? Well, no, Kubernetes [network plugins](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) are supposed to be installed **on top of** a running cluster.
 
 ## Kernel Configuration
 
