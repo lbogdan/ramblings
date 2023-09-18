@@ -711,6 +711,8 @@ kubectl delete service nginx
 # see https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
 kubectl delete pod nginx
 # pod "nginx" deleted
+#
+# wait ~30s for the prompt
 ```
 
 Victory! We now finally have an (almost) functional cluster! We still need some persistent storage, an ingress controller, a way to generate TLS certificates for exposed workloads, and so on, and we'll explore all these in a future article.
