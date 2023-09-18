@@ -717,4 +717,4 @@ kubectl delete pod nginx
 
 Victory! We now finally have an (almost) functional cluster! We still need some persistent storage, an ingress controller, a way to generate TLS certificates for exposed workloads, and so on, and we'll explore all these in a future article.
 
-There's also some questionable `kubeadm` defaults, which are not immediately apparent, so let's explore them in the next article!
+In the next article we'll go over the internals of whatever `kubeadm init` did to create the cluster, and look into the shortcomings of `kubeadm init` defaults, and how to fix them.
