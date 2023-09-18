@@ -420,7 +420,7 @@ Feeling lucky? Let's run a preflight check again:
 
 ```sh
 # this will take a while, depending on your network speed,
-# as it's pulling the Kubernetes components' images
+# as it'll pull the Kubernetes components' images
 kubeadm init phase preflight | tee -a kubeadm-init-preflight.log
 # I0918 10:19:28.375256   13508 version.go:256] remote version is much newer: v1.28.2; falling back to: stable-1.27
 # [preflight] Running pre-flight checks
