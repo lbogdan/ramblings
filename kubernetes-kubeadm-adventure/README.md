@@ -706,6 +706,7 @@ curl -i http://65.108.153.69:31557/
 # now let's cleanup after ourselves:
 kubectl delete service nginx
 # service "nginx" deleted
+#
 # the pod delete takes ~30s, as nginx doesn't handle SIGTERM
 # see https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
 kubectl delete pod nginx
