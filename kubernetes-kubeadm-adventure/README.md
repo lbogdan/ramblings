@@ -594,6 +594,8 @@ kubectl -n kube-system get pod kube-proxy-74f6z -o yaml | grep hostNetwork
 #   hostNetwork: true
 ```
 
+## Network Plugin: Calico
+
 Alrighty, then, it looks like installing a network plugin will finally get us a functional cluster! As I said above, we'll be using Calico. Let's follow their [install instructions](https://docs.tigera.io/calico/latest/getting-started/kubernetes/self-managed-onprem/onpremises#install-calico-with-kubernetes-api-datastore-50-nodes-or-less) for a (small) self-managed on-premise cluster:
 
 ```sh
@@ -630,6 +632,8 @@ The node is `Ready`, the `coredns` pods are `Running`, and we have two more `cal
 
 > **Note**
 > As an aside, I think that's one of the Kubernetes' strengths: you define a manifest following a well-defined API, and after a little while, you have your cluster converging, configuring and running whatever workloads you defined in your manifest. Just imagine doing the same to orchestrate, configure and run workloads on multiple nodes with assorted tools and / or bespoke scripts!
+
+## Cluster Validation Checks
 
 Now that we have a functional cluster, let's run a simple workload and check if we can access it. We'll use the official [`nginx` image](https://hub.docker.com/_/nginx):
 
