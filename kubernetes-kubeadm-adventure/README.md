@@ -701,7 +701,7 @@ curl -i http://65.108.153.69:31557/
 # <title>Welcome to nginx!</title>
 # [...]
 #
-# or load http://65.108.153.69:31557/ in a browser
+# or just load http://65.108.153.69:31557/ in a browser
 #
 # now let's cleanup after ourselves:
 kubectl delete service nginx
