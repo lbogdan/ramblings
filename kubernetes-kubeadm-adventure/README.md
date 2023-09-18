@@ -708,7 +708,7 @@ kubectl delete service nginx
 # service "nginx" deleted
 #
 # the pod delete takes ~30s, as nginx doesn't handle SIGTERM
-# see https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
+# see https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination
 kubectl delete pod nginx
 # pod "nginx" deleted
 #
