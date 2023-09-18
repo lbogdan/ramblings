@@ -62,7 +62,8 @@ First of all, we'll do some setting-up not directly related to Kubernetes:
 ```sh
 apt-get -q update
 apt-get -qy upgrade
-# if shown, press ESC at the restart services dialog
+# if shown, press ESC at the restart services dialog,
+# as we'll reboot the server shortly
 ```
 
 - Remove unneeded packages:
@@ -474,7 +475,7 @@ kubeadm init --help | grep cidr
 Actually, there's two network CIDRs, for both pods and services, but we'll use the default for services. And for the pod network we'll use `192.168.0.0/16`, which is Calico's default, the network plugin we'll be using.
 
 > **Warning**
-> When you decide on which networks to use, make sure they don't overlap with any other networks you want to reach from the pods running inside the cluster, or networks already in use on your cluster nodes.
+> When you decide on which networks to use, make sure they don't overlap with any other networks you want to reach from the pods running inside the cluster, or any networks already in use on your cluster nodes.
 
 ```sh
 # make sure KUBERNETES_VERSION is still set
