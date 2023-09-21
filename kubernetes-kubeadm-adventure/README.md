@@ -459,7 +459,7 @@ Actually, there's two network CIDRs, for both pods and services, but we'll use t
 # make sure KUBERNETES_VERSION is still set
 touch before-kubeadm-init
 kubeadm init --kubernetes-version "$KUBERNETES_VERSION" --pod-network-cidr 192.168.0.0/16 | tee kubeadm-init.log
-find / -mouont -newer before-kubeadm-init | grep -v '^/var/lib/containers' >kubeadm-init-diff.txt
+find / -mount -newer before-kubeadm-init | grep -v '^/var/lib/containers' >kubeadm-init-diff.txt
 # [init] Using Kubernetes version: v1.27.6
 # [preflight] Running pre-flight checks
 # [preflight] Pulling images required for setting up a Kubernetes cluster
