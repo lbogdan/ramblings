@@ -457,7 +457,9 @@ Actually, there's two network CIDRs, for both pods and services, but we'll use t
 
 ```sh
 # make sure KUBERNETES_VERSION is still set
+touch before-kubeadm-init
 kubeadm init --kubernetes-version "$KUBERNETES_VERSION" --pod-network-cidr 192.168.0.0/16 | tee kubeadm-init.log
+find / -mouont -newer before-kubeadm-init | grep -v '^/var/lib/containers' >kubeadm-init-diff.txt
 # [init] Using Kubernetes version: v1.27.6
 # [preflight] Running pre-flight checks
 # [preflight] Pulling images required for setting up a Kubernetes cluster
@@ -535,6 +537,9 @@ kubectl get nodes
 # test-cp-0   NotReady   control-plane   87s   v1.27.6
 ```
 
+> **Note**
+> The `touch` before and the `find` after is an easy way to get a list of files and folders that `kubeadm init` created and updated. We'll take a look at this in the next article. 
+
 Hooray, we have a functional clus... Wait, why is the node `NotReady`?!
 
 ```sh
@@ -582,7 +587,9 @@ curl -LO https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifest
 # take a quick look at the manifest
 less calico.yaml
 # and then apply it; make sure KUBECONFIG is still set
+touch before-calico
 kubectl apply -f calico.yaml
+find / -mount -newer before-calico | grep -v '^/var/lib/containers' >calico-diff.lst
 # serviceaccount/calico-kube-controllers created
 # [...]
 # deployment.apps/calico-kube-controllers created
