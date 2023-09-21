@@ -82,7 +82,7 @@ apt-get -qy autoremove
   # Linux test-cp-0 5.15.0-79-generic #86-Ubuntu SMP Mon Jul 10 16:07:21 UTC 2023 x86_64 x86_64 x86_64 GNU/Linux
   # /root
   mkdir kernel && cd kernel
-  wget https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.5.3/amd64/linux-headers-6.5.3-060503-generic_6.5.3-060503.202309130834_amd64.deb https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.5.3/amd64/linux-headers-6.5.3-060503_6.5.3-060503.202309130834_all.deb https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.5.3/amd64/linux-image-unsigned-6.5.3-060503-generic_6.5.3-060503.202309130834_amd64.deb https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.5.3/amd64/linux-modules-6.5.3-060503-generic_6.5.3-060503.202309130834_amd64.deb
+  curl -LOOOO https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.5.3/amd64/linux-headers-6.5.3-060503-generic_6.5.3-060503.202309130834_amd64.deb https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.5.3/amd64/linux-headers-6.5.3-060503_6.5.3-060503.202309130834_all.deb https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.5.3/amd64/linux-image-unsigned-6.5.3-060503-generic_6.5.3-060503.202309130834_amd64.deb https://kernel.ubuntu.com/~kernel-ppa/mainline/v6.5.3/amd64/linux-modules-6.5.3-060503-generic_6.5.3-060503.202309130834_amd64.deb
   # output:
   # [...]
   # Downloaded: 4 files, 190M in 2.5s (76.1 MB/s)
@@ -578,7 +578,7 @@ kubectl -n kube-system get pod kube-proxy-74f6z -o yaml | grep hostNetwork
 Alrighty, then, it looks like installing a network plugin will finally get us a functional cluster! As I said above, we'll be using Calico. Let's follow their [install instructions](https://docs.tigera.io/calico/latest/getting-started/kubernetes/self-managed-onprem/onpremises#install-calico-with-kubernetes-api-datastore-50-nodes-or-less) for a (small) self-managed on-premise cluster:
 
 ```sh
-curl -O https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml
+curl -LO https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml
 # take a quick look at the manifest
 less calico.yaml
 # and then apply it; make sure KUBECONFIG is still set
